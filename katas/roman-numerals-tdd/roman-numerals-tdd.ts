@@ -7,7 +7,9 @@ export const romanNumeralConverter = (numberToConvert: number) => {
   let romanNumber = "";
 
   NUMERAL_TO_ROMAN.forEach(({ numeral, roman }) => {
-    while (remainingToConvert >= numeral) {
+    const isStillSubstractable = remainingToConvert >= numeral;
+
+    while (isStillSubstractable) {
       romanNumber += roman;
       remainingToConvert -= numeral;
     }
