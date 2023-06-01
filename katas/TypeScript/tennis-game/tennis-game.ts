@@ -16,15 +16,25 @@ export const displayScore = (score: string) => {
   const isDraw = playerOneScore === playerTwoScore;
   const isDeuce = isDraw && playerOneScore === "3";
   const isAdvantage =
-    parseInt(playerOneScore) === 4 || parseInt(playerTwoScore) === 4;
+    parseInt(playerOneScore) === MIN_POINTS_TO_WIN ||
+    parseInt(playerTwoScore) === MIN_POINTS_TO_WIN;
+  const hasEnoughDifference =
+    parseInt(playerOneScore) >= parseInt(playerTwoScore) + DIFFERENCE_TO_WIN ||
+    parseInt(playerTwoScore) >= parseInt(playerOneScore) + DIFFERENCE_TO_WIN;
+  const hasEnoughPointsToWin =
+    parseInt(playerOneScore) >= MIN_POINTS_TO_WIN ||
+    parseInt(playerTwoScore) >= MIN_POINTS_TO_WIN;
+  const hasGameEnded = hasEnoughDifference && hasEnoughPointsToWin;
 
-  if (score === "4-2") return "Player 1 has won";
-  if (score === "5-3") return "Player 1 has won";
-  if (score === "2-4") return "Player 2 has won";
+  if (hasGameEnded) {
+    return parseInt(playerOneScore) > parseInt(playerTwoScore)
+      ? "Player 1 has won"
+      : "Player 2 has won";
+  }
   if (isDeuce) return "Deuce";
   if (isDraw) return `${NUMERIC_CONVERSION[playerOneScore]}-All`;
   if (isAdvantage) {
-    return parseInt(playerOneScore) === 4
+    return parseInt(playerOneScore) === MIN_POINTS_TO_WIN
       ? "Advantage-Forty"
       : "Forty-Advantage";
   }
