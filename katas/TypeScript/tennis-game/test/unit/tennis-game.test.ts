@@ -12,4 +12,9 @@ describe("checks if displays score correctly", () => {
     expect(displayScore("2-2")).toBe("Thirty-All");
     expect(displayScore("3-3")).toBe("Deuce");
   });
+
+  test("if given an advantage situation displays the advantage correctly", () => {
+    expect(displayScore("3-4")).toBe("Forty-Advantage");
+    expect(displayScore("4-3")).toBe("Advantage-Forty");
+  });
 });

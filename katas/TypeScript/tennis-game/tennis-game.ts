@@ -7,6 +7,8 @@ const NUMERIC_CONVERSION = {
   "3": "Forty",
 };
 
+const DIFFERENCE_TO_WIN = 2;
+
 export const displayScore = (score: string) => {
   const [playerOneScore, playerTwoScore] = score.split("-");
   const isDraw = playerOneScore === playerTwoScore;
@@ -14,6 +16,8 @@ export const displayScore = (score: string) => {
 
   if (isDeuce) return "Deuce";
   if (isDraw) return `${NUMERIC_CONVERSION[playerOneScore]}-All`;
+  if (score === "3-4") return "Forty-Advantage";
+  if (score === "4-3") return "Advantage-Forty";
 
   return (
     NUMERIC_CONVERSION[playerOneScore] +
