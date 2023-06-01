@@ -17,4 +17,10 @@ describe("checks if displays score correctly", () => {
     expect(displayScore("3-4")).toBe("Forty-Advantage");
     expect(displayScore("4-3")).toBe("Advantage-Forty");
   });
+
+  test("if given a winning result displays which player has won", () => {
+    expect(displayScore("4-2")).toBe("Player 1 has won");
+    expect(displayScore("5-3")).toBe("Player 1 has won");
+    expect(displayScore("2-4")).toBe("Player 2 has won");
+  });
 });
