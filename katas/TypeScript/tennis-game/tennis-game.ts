@@ -9,15 +9,15 @@ const NUMERIC_CONVERSION = {
 
 export const displayScore = (score: string) => {
   const [playerOneScore, playerTwoScore] = score.split("-");
-  const convertedScore =
+  const isDraw = playerOneScore === playerTwoScore;
+  const isDeuce = isDraw && playerOneScore === "3";
+
+  if (isDeuce) return "Deuce";
+  if (isDraw) return `${NUMERIC_CONVERSION[playerOneScore]}-All`;
+
+  return (
     NUMERIC_CONVERSION[playerOneScore] +
     "-" +
-    NUMERIC_CONVERSION[playerTwoScore];
-
-  if (score === "0-0") return "Love-All";
-  if (score === "1-1") return "Fifteen-All";
-  if (score === "2-2") return "Thirty-All";
-  if (score === "3-3") return "Deuce";
-
-  return convertedScore;
+    NUMERIC_CONVERSION[playerTwoScore]
+  );
 };
