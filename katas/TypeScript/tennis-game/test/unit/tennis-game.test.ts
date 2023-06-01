@@ -5,4 +5,10 @@ describe("checks if displays score correctly", () => {
     expect(displayScore("0-2")).toBe("Love-Thirty");
     expect(displayScore("1-3")).toBe("Fifteen-Forty");
   });
+
+  test("if given a numeric draw score displays the correct nomenclature", () => {
+    expect(displayScore("0-0")).toBe("Love-All");
+    expect(displayScore("1-1")).toBe("Fifteen-All");
+    expect(displayScore("2-2")).toBe("Thirty-All");
+  });
 });

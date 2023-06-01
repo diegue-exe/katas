@@ -14,5 +14,9 @@ export const displayScore = (score: string) => {
     "-" +
     NUMERIC_CONVERSION[playerTwoScore];
 
+  if (score === "0-0") return "Love-All";
+  if (score === "1-1") return "Fifteen-All";
+  if (score === "2-2") return "Thirty-All";
+
   return convertedScore;
 };
