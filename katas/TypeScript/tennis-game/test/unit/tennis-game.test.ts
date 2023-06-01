@@ -10,5 +10,6 @@ describe("checks if displays score correctly", () => {
     expect(displayScore("0-0")).toBe("Love-All");
     expect(displayScore("1-1")).toBe("Fifteen-All");
     expect(displayScore("2-2")).toBe("Thirty-All");
+    expect(displayScore("3-3")).toBe("Deuce");
   });
 });

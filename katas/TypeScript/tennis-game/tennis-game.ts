@@ -17,6 +17,7 @@ export const displayScore = (score: string) => {
   if (score === "0-0") return "Love-All";
   if (score === "1-1") return "Fifteen-All";
   if (score === "2-2") return "Thirty-All";
+  if (score === "3-3") return "Deuce";
 
   return convertedScore;
 };
